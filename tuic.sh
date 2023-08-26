@@ -296,7 +296,7 @@ EOF
     yellow "Clash Meta Client profile saved to /root/tuic/clash-meta.yaml"
     yellow "The nekobox configuration as follows and saved to /root/tuic/tuic.txt"
     red "======================================================================================"
-    echo "Your config : $(cat /root/tuic/tuic.txt)"
+    echo "Your config : $url "
     echo " "
 }
 
@@ -421,7 +421,7 @@ showconf(){
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
     yellow "-----------------------------------------------------------------------"
-    echo "Your config --> : $(cat /root/tuic/tuic.txt)"
+    echo "Your config --> : $url"
     echo " "
 }
 
