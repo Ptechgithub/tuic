@@ -4,5 +4,5 @@
 Install
 
 ```
-wget -N --no-check-certificate https://github.com/Ptechgithub/master/tuic.sh && bash tuic.sh
+bash <(curl -fsSL https://raw.githubusercontent.com/Ptechgithub/tuic/main/tuic.sh)
 ```
