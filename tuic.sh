@@ -296,7 +296,7 @@ EOF
     yellow "Clash Meta Client profile saved to /root/tuic/clash-meta.yaml"
     yellow "The nekobox configuration as follows and saved to /root/tuic/tuic.txt"
     red "======================================================================================"
-    echo "Your config : $url "
+    echo "Your config : $(cat /root/tuic/tuic.txt)"
     echo " "
 }
 
@@ -308,9 +308,6 @@ unsttuic(){
     
     green "Tuic has been completely uninstalled！"
 }
-
-url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3%2Cspdy%2F3.1&allow_insecure=1#Peyman-Tuic"
-echo $url > /root/tuic/tuic.txt
 
 starttuic(){
     systemctl start tuic
@@ -421,9 +418,12 @@ showconf(){
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
     yellow "-----------------------------------------------------------------------"
-    echo "Your config --> : $url"
+    echo "Your config --> : $(cat /root/tuic/tuic.txt)"
     echo " "
 }
+
+url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3%2Cspdy%2F3.1&allow_insecure=1#Peyman-Tuic"
+echo $url > /root/tuic/tuic.txt
 
 menu() {
     clear
@@ -432,7 +432,7 @@ menu() {
     echo -e "# ${GREEN}Gihub ${PLAIN}: https://gitlab.com/Ptechgithub                 #"
     echo -e "# ${GREEN}Telegram ${PLAIN}: https://t.me/P_tech2024                     #"
     echo -e "# ${GREEN}YouTube ${PLAIN}: https://www.youtube.com/@IR_TECH             #"
-    echo "1##########################################################"
+    echo "##########################################################"
     echo ""
     echo -e " ${GREEN}1.${PLAIN} Install Tuic"
     echo -e " ${GREEN}2.${PLAIN} ${RED}Uninstall Tuic${PLAIN}"
