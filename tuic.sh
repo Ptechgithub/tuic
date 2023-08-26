@@ -412,8 +412,8 @@ changeconf(){
     esac
 }
 
-    url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3%2Cspdy%2F3.1&allow_insecure=1#Peyman-Tuic"
-    echo $url > /root/tuic/tuic.txt
+url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3%2Cspdy%2F3.1&allow_insecure=1#Peyman-Tuic"
+  echo $url > /root/tuic/tuic.txt
 
 showconf(){
     yellow "The content of the client configuration file tuic-client.json saved to /root/tuic/tuic-client.json"
