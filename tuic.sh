@@ -300,6 +300,7 @@ EOF
     red "======================================================================================"
     echo "Your config : $(cat /root/tuic/tuic.txt)"
     echo " "
+    echo $url
 }
 
 unsttuic(){
