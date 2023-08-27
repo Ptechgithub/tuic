@@ -224,6 +224,19 @@ EOF
     "log_level": "warn"
 }
 EOF
+    cat << EOF > /root/tuic/tuic.txt
+Sagernet, Nekobox and Little Rocket configuration instructions (the following 6 items are required) :
+{
+    Server address：$domain
+    Port：$port
+    UUID: $uuid
+    Password：$passwd
+    ALPN：h3
+    UDP Forward：on
+    UDP forwarding mode: QUIC
+    Congestion control: bbr
+}
+EOF
     cat << EOF > /root/tuic/clash-meta.yaml
 mixed-port: 7890
 external-controller: 127.0.0.1:9090
