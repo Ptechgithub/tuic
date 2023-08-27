@@ -269,7 +269,8 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 EOF
-    echo "tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic" > /root/tuic/tuic.txt
+    url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"    
+    echo $url > /root/tuic/tuic.txt
     
     systemctl daemon-reload
     systemctl enable tuic
