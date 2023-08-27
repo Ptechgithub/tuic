@@ -88,7 +88,7 @@ insttuic(){
     
     green "The methods for Get certificates ："
     echo ""
-    echo -e " ${GREEN}1.${PLAIN} Acme (auto) ${YELLOW}（default）${PLAIN}"
+    echo -e " ${GREEN}1.${PLAIN} Script automatic ${YELLOW}（default）${PLAIN}"
     echo -e " ${GREEN}2.${PLAIN} Custom Certificate Path"
     echo ""
     read -rp "Please enter options [1-2]: " certInput
@@ -191,18 +191,7 @@ insttuic(){
     "certificate": "$cert_path",
     "private_key": "$key_path",
     "congestion_control": "bbr",
-    "alpn": ["h3", "spdy/3.1"],
-    "udp_relay_ipv6": true,
-    "zero_rtt_handshake": false,
-    "dual_stack": true,
-    "auth_timeout": "3s",
-    "task_negotiation_timeout": "3s",
-    "max_idle_time": "10s",
-    "max_external_packet_size": 1500,
-    "send_window": 16777216,
-    "receive_window": 8388608,
-    "gc_interval": "3s",
-    "gc_lifetime": "15s",
+    "alpn": ["h3"],
     "log_level": "warn"
 }
 EOF
@@ -224,9 +213,6 @@ EOF
     "log_level": "warn"
 }
 EOF
-
-    echo "tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic" > /root/tuic/tuic.txt
-
     cat << EOF > /root/tuic/clash-meta.yaml
 mixed-port: 7890
 external-controller: 127.0.0.1:9090
@@ -292,15 +278,13 @@ EOF
     else
         red "The tuic service failed to start. Please run systemctl status tuic to view the service status and give feedback. The script exits" && exit 1
     fi
-    red "1======================================================================================"
+    red "======================================================================================"
     green "Tuic proxy service installation complete"
     yellow "The content of the client configuration file tuic-client.json saved to /root/tuic/tuic-client.json"
     cat /root/tuic/tuic-client.json
     yellow "Clash Meta Client profile saved to /root/tuic/clash-meta.yaml"
     yellow "The nekobox configuration as follows and saved to /root/tuic/tuic.txt"
-    yellow $url
-    red "======================================================================================"
-    echo " "
+    cat /root/tuic/tuic.txt
 }
 
 unsttuic(){
@@ -420,9 +404,7 @@ showconf(){
     cat /root/tuic/tuic-client.json
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
-    yellow "-----------------------------------------------------------------------"
-    cat /root/tuic/tuic.txt
-    echo " "
+    echo "tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
 }
 
 menu() {
