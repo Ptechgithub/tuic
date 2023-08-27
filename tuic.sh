@@ -269,6 +269,7 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 EOF
+    echo "tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic" > /root/tuic/tuic.txt
     
     systemctl daemon-reload
     systemctl enable tuic
@@ -404,7 +405,7 @@ showconf(){
     cat /root/tuic/tuic-client.json
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
-    echo "tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
+    cat /root/tuic/tuic.txt
 }
 
 menu() {
