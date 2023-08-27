@@ -239,7 +239,6 @@ Sagernet, Nekobox and Little Rocket configuration instructions (the following 6 
 EOF
 
 url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
-echo $url > /root/tuic/tuic.txt
 
     cat << EOF > /root/tuic/clash-meta.yaml
 mixed-port: 7890
@@ -313,7 +312,7 @@ EOF
     yellow "Clash Meta Client profile saved to /root/tuic/clash-meta.yaml"
     yellow "The nekobox configuration as follows and saved to /root/tuic/tuic.txt"
     red "======================================================================================"
-    echo "Your config : $(cat /root/tuic/tuic.txt)"
+    echo $url > /root/tuic/tuic.txt
     echo " "
 }
 
@@ -435,7 +434,7 @@ showconf(){
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
     yellow "-----------------------------------------------------------------------"
-    echo "Your config --> : $(cat /root/tuic/tuic.txt)"
+    echo $url > /root/tuic/tuic.txt
     echo " "
 }
 
