@@ -224,19 +224,8 @@ EOF
     "log_level": "warn"
 }
 EOF
-    cat << EOF > /root/tuic/tuic.txt
-Sagernet, Nekobox and Little Rocket configuration instructions (the following 6 items are required) :
-{
-    Server address: $domain
-    Port: $port
-    UUID: $uuid
-    Password: $passwd
-    ALPN: h3
-    UDP Forward: on
-    UDP forwarding mode: QUIC
-    Congestion control: bbr
-}
-EOF
+
+    echo "tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic" > /root/tuic/tuic.txt
 
     cat << EOF > /root/tuic/clash-meta.yaml
 mixed-port: 7890
@@ -279,8 +268,6 @@ rules:
   - GEOIP,IR,DIRECT
   - MATCH,Proxy
 EOF
-
-url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
 
     cat << EOF >/etc/systemd/system/tuic.service
 [Unit]
