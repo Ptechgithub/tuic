@@ -221,7 +221,6 @@ cat << EOF > /root/tuic/tuic-client.json
 	   "log_level": "warn"
 }
 EOF
-
     cat << EOF > /root/tuic/clash-meta.yaml
 mixed-port: 7890
 external-controller: 127.0.0.1:9090
@@ -361,7 +360,7 @@ changeuuid(){
     read -p "Set UUID（Enter for generate UUID）：" uuid
     [[ -z $uuid ]] && uuid=$(cat /proc/sys/kernel/random/uuid)
 
-    sed -i "3s/$olduuid/$uuid/g" /etc/tuic/tuic.json
+    sed -i "4s/$olduuid/$uuid/g" /etc/tuic/tuic.json
     sed -i "4s/$olduuid/$uuid/g" /root/tuic/tuic-client.json
     sed -i "21s/$olduuid/$uuid/g" /root/tuic/clash-meta.yaml
 
@@ -376,7 +375,7 @@ changepasswd(){
     read -p "Enter Password（Enter for random）：" passwd
     [[ -z $passwd ]] && passwd=$(date +%s%N | md5sum | cut -c 1-8)
 
-    sed -i "3s/$oldpasswd/$passwd/g" /etc/tuic/tuic.json
+    sed -i "4s/$oldpasswd/$passwd/g" /etc/tuic/tuic.json
     sed -i "5s/$oldpasswd/$passwd/g" /root/tuic/tuic-client.json
     sed -i "22s/$oldpasswd/$passwd/g" /root/tuic/clash-meta.yaml
 
