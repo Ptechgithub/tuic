@@ -309,6 +309,7 @@ EOF
     cat /root/tuic/tuic-client.json
     yellow "Clash Meta Client profile saved to /root/tuic/clash-meta.yaml"
     yellow "The nekobox configuration as follows and saved to /root/tuic/tuic.txt"
+    yellow $url
     red "======================================================================================"
     echo " "
 }
