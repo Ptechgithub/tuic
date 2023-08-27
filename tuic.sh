@@ -421,12 +421,13 @@ showconf(){
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
     yellow "-----------------------------------------------------------------------"
+    cat /root/tuic/tuic.txt
     echo " "
 }
 
 menu() {
     clear
-    echo "00##########################################################"
+    echo "##########################################################"
     echo -e "#          ${RED}Tuic 一one-click installation script${PLAIN}          #"
     echo -e "# ${GREEN}Gihub ${PLAIN}: https://gitlab.com/Ptechgithub                 #"
     echo -e "# ${GREEN}Telegram ${PLAIN}: https://t.me/P_tech2024                     #"
