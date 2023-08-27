@@ -238,8 +238,6 @@ Sagernet, Nekobox and Little Rocket configuration instructions (the following 6 
 }
 EOF
 
-url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
-
     cat << EOF > /root/tuic/clash-meta.yaml
 mixed-port: 7890
 external-controller: 127.0.0.1:9090
@@ -305,14 +303,13 @@ EOF
     else
         red "The tuic service failed to start. Please run systemctl status tuic to view the service status and give feedback. The script exits" && exit 1
     fi
-    red "======================================================================================"
+    red "1======================================================================================"
     green "Tuic proxy service installation complete"
     yellow "The content of the client configuration file tuic-client.json saved to /root/tuic/tuic-client.json"
     cat /root/tuic/tuic-client.json
     yellow "Clash Meta Client profile saved to /root/tuic/clash-meta.yaml"
     yellow "The nekobox configuration as follows and saved to /root/tuic/tuic.txt"
     red "======================================================================================"
-    echo $url > /root/tuic/tuic.txt
     echo " "
 }
 
@@ -434,7 +431,6 @@ showconf(){
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
     yellow "-----------------------------------------------------------------------"
-    echo $url
     echo " "
 }
 
