@@ -305,7 +305,7 @@ EOF
     else
         red "The tuic service failed to start. Please run systemctl status tuic to view the service status and give feedback. The script exits" && exit 1
     fi
-    red "======================================================================================"
+    red "1======================================================================================"
     green "Tuic proxy service installation complete"
     yellow "The content of the client configuration file tuic-client.json saved to /root/tuic/tuic-client.json"
     cat /root/tuic/tuic-client.json
