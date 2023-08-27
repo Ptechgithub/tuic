@@ -434,7 +434,7 @@ showconf(){
     yellow "Clash Meta client configuration file saved to /root/tuic/clash-meta.yaml"
     yellow "Tuic node configuration plaintext saved to /root/tuic/tuic.txt"
     yellow "-----------------------------------------------------------------------"
-    echo $url > /root/tuic/tuic.txt
+    echo $url
     echo " "
 }
 
