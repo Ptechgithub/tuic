@@ -269,7 +269,7 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 EOF
-    url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"    
+    url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
     echo $url > /root/tuic/tuic.txt
     
     systemctl daemon-reload
@@ -325,7 +325,7 @@ tuicswitch(){
 }
 
 changeport(){
-    oldport=$(cat /etc/tuic/tuic.txt 2>/dev/null | sed -n 2p | awk '{print $2}' | tr -d ',' | awk -F ":" '{print $4}' | tr -d '"')
+    oldport=$(cat /etc/tuic/tuic.json 2>/dev/null | sed -n 2p | awk '{print $2}' | tr -d ',' | awk -F ":" '{print $4}' | tr -d '"')
     
     read -p "Enter Port [1-65535]（Enter fo random port）：" port
     [[ -z $port ]] && port=$(shuf -i 2000-65535 -n 1)
@@ -411,7 +411,7 @@ showconf(){
 
 menu() {
     clear
-    echo "44##########################################################"
+    echo "##########################################################"
     echo -e "#          ${RED}Tuic 一one-click installation script${PLAIN}          #"
     echo -e "# ${GREEN}Gihub ${PLAIN}: https://gitlab.com/Ptechgithub                 #"
     echo -e "# ${GREEN}Telegram ${PLAIN}: https://t.me/P_tech2024                     #"
