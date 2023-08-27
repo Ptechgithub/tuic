@@ -293,7 +293,7 @@ EOF
     red "Clash Meta Client profile saved to /root/tuic/clash-meta.yaml"
     red "======================================================================================"
     red "Your config :"
-    yellow "   $url"
+    yellow " $url"
 }
 
 unsttuic(){
