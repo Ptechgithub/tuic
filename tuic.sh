@@ -227,16 +227,20 @@ EOF
     cat << EOF > /root/tuic/tuic.txt
 Sagernet, Nekobox and Little Rocket configuration instructions (the following 6 items are required) :
 {
-    Server address：$domain
-    Port：$port
+    Server address: $domain
+    Port: $port
     UUID: $uuid
-    Password：$passwd
-    ALPN：h3
-    UDP Forward：on
+    Password: $passwd
+    ALPN: h3
+    UDP Forward: on
     UDP forwarding mode: QUIC
     Congestion control: bbr
 }
 EOF
+
+url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
+echo $url > /root/tuic/tuic.txt
+
     cat << EOF > /root/tuic/clash-meta.yaml
 mixed-port: 7890
 external-controller: 127.0.0.1:9090
@@ -293,8 +297,6 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 EOF
-    url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3%2Cspdy%2F3.1&allow_insecure=1#Peyman-Tuic"
-    echo $url > /root/tuic/tuic.txt
     
     systemctl daemon-reload
     systemctl enable tuic
