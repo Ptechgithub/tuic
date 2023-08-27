@@ -280,6 +280,8 @@ rules:
   - MATCH,Proxy
 EOF
 
+url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
+
     cat << EOF >/etc/systemd/system/tuic.service
 [Unit]
 Description=tuic Service
