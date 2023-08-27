@@ -269,8 +269,10 @@ LimitNOFILE=infinity
 [Install]
 WantedBy=multi-user.target
 EOF
-    url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
-    echo $url > /root/tuic/tuic.txt
+
+    new_port=$(cat /etc/tuic/tuic.json 2>/dev/null | grep -o '"server": "[^"]*' | awk -F ": " '{print $2}' | awk -F '"' '{print $2}')
+    new_url="tuic://$uuid:$passwd@$domain:$new_port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3&allow_insecure=1#Peyman-Tuic"
+    echo "$new_url" > /root/tuic/tuic.txt
     
     systemctl daemon-reload
     systemctl enable tuic
