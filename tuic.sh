@@ -196,7 +196,7 @@ insttuic(){
 }
 EOF
 
-url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3%2Cspdy%2F3.1&allow_insecure=1#Peyman-Tuic"
+url="tuic://$uuid:$passwd@$domain:$port/?congestion_control=bbr&udp_relay_mode=quic&alpn=h3,spdy/3.1&allow_insecure=1#Peyman-Tuic"
 mkdir /root/tuic >/dev/null 2>&1
 cat << EOF > /root/tuic/tuic-client.json
 {
