@@ -9,3 +9,5 @@ bash <(curl -fsSL https://raw.githubusercontent.com/Ptechgithub/tuic/main/tuic.s
 
 
 ![1](https://raw.githubusercontent.com/Ptechgithub/tuic/main/media/1.jpg)
+
+forked:[Misaka-blog](https://github.com/Misaka-blog)
